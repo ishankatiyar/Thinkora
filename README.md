@@ -282,29 +282,3 @@ Invoke-RestMethod -Method POST `
 9. Users can also write and save **Research Notes** (up to 500 characters) in the panel.
 
 ---
-
-## Security Notes
-
-**API Key:** Never commit a real API key to version control. Use an environment variable in application.properties:
-
-`properties
-gemini.api.key=${GEMINI_API_KEY}
-`
-
-**CORS:** The backend currently allows all origins. Restrict this before any public deployment by replacing @CrossOrigin(origins = "*") with your specific domain.
-
-**Localhost binding:** To prevent the API from being accessible on your local network, add to application.properties:
-
-`properties
-server.address=127.0.0.1
-`
-
----
-
-## Known Limitations
-
-- The backend must be running locally - there is no hosted deployment.
-- Only two AI operations are supported: summarize and suggest.
-- Very long pages may hit Gemini token limits and return partial results.
-- Chrome only (version 114+) - the side panel API is not available in Firefox or Safari.
-- Requires Developer Mode enabled to load as an unpacked extension (not published to the Chrome Web Store).
