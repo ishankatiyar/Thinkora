@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 14px;
+    background: #f4f5f9;
+    color: #1a1a2e;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px;
+}
+
+/* ── Header ─────────────────────────────── */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: 0 4px 16px rgba(79, 70, 229, 0.28);
+}
+
+.header-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+.header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.header-text h2 {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+.header-sub {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+}
+
+/* ── Summarize button ───────────────────── */
+.actions {
+    display: flex;
+}
+
+#summarizeBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 11px;
+    background: #4f46e5;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(79, 70, 229, 0.32);
+    transition: background 0.15s, box-shadow 0.15s, transform 0.1s;
+}
+
+#summarizeBtn:hover {
+    background: #4338ca;
+    box-shadow: 0 5px 14px rgba(79, 70, 229, 0.42);
+}
+
+#summarizeBtn:active {
+    transform: scale(0.97);
+}
+
+/* ── Cards ──────────────────────────────── */
+.card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 14px;
+    border: 1px solid #e8eaf0;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+}
+
+.card-title svg {
+    color: #9ca3af;
+}
+
+/* ── Icon button (clear) ────────────────── */
+.icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    color: #9ca3af;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.icon-btn:hover {
+    background: #f3f4f6;
+    color: #ef4444;
+}
+
+/* ── Loader ─────────────────────────────── */
+.loader {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0 4px;
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.loader.active {
+    display: flex;
+}
+
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2.5px solid #e5e7eb;
+    border-top-color: #4f46e5;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    flex-shrink: 0;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ── Results ────────────────────────────── */
+#results {
+    font-size: 13px;
+    line-height: 1.75;
+    color: #374151;
+    word-break: break-word;
+    white-space: pre-wrap;
+    min-height: 40px;
+}
+
+#results:empty::before {
+    content: "Hit 'Summarize Page' to analyse the current tab.";
+    color: #c4c9d4;
+    font-style: italic;
+    font-size: 12px;
+}
+
+/* ── Notes textarea ─────────────────────── */
+#notes {
+    width: 100%;
+    height: 110px;
+    border: 1px solid #e2e5ec;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 13px;
+    color: #1a1a2e;
+    background: #f9fafb;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+    line-height: 1.6;
+}
+
+#notes:focus {
+    border-color: #4f46e5;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+#notes::placeholder {
+    color: #b8bec9;
+}
+
+/* ── Notes footer ───────────────────────── */
+.notes-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.char-count {
+    font-size: 11px;
+    color: #b0b7c3;
+    font-variant-numeric: tabular-nums;
+}
+
+.save-status {
+    font-size: 11px;
+    color: #16a34a;
+    font-weight: 500;
+    min-height: 16px;
+    transition: opacity 0.3s;
+}
+
+#saveNotesBtn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #bbf7d0;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+#saveNotesBtn:hover {
+    background: #dcfce7;
+    border-color: #86efac;
+}
+
+#saveNotesBtn:active {
+    transform: scale(0.96);
+}
